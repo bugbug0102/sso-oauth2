@@ -1,0 +1,16 @@
+security:
+  oauth2:
+    client:
+      clientId: my-client-with-registered-redirect
+      clientSecret: secret001
+      accessTokenUri: http://127.0.0.1:30001/as/oauth/token
+      userAuthorizationUri:  http://127.0.0.1:30001/as/oauth/authorize
+      tokenName: access_token
+      authenticationScheme: header
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: http://127.0.0.1:40002/profile/user
+      
+server:
+  contextPath: /res2
+  port: 40003

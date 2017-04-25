@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driverClassName: org.jdbcdslog.DriverLoggingProxy
+    url: jdbc:jdbcdslog:sqlserver://10.128.30.22;targetDriver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sandbox
+    password: sandbox
+  
+server:
+  contextPath: /profile
+  port: 40002

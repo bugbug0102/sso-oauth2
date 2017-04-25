@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration shutdownHook="disable">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyyMMdd HHmmss} [%t] %-5p %C{6} (%F:%L) - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.b0102" additivity="false" level="trace">
+            <AppenderRef ref="console"/>
+        </Logger>
+        <Logger name="org.springframework.security.oauth2" additivity="false" level="debug">
+            <AppenderRef ref="console"/>
+        </Logger>
+        <Logger name="org.springframework.security" additivity="false" level="debug">
+            <AppenderRef ref="console"/>
+        </Logger>
+        <Root level="warn">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>
