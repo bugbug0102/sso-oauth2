@@ -48,15 +48,9 @@ private[server] class AsConfig extends AuthorizationServerConfigurerAdapter
   
   override def configure(endpoints:AuthorizationServerEndpointsConfigurer):Unit =
   {
-//    val chain = new TokenEnhancerChain()
-//    val te = new CustomTokenEnhancer()
-    
-//    chain.setTokenEnhancers(List[TokenEnhancer](te, accessTokenConverter.asInstanceOf[JwtAccessTokenConverter]).asJava)
-    
     endpoints
       .tokenStore(tokenStore)
       .accessTokenConverter(accessTokenConverter)
-//      .tokenEnhancer(chain)
       .authenticationManager(authenticationManager)
   }
   
