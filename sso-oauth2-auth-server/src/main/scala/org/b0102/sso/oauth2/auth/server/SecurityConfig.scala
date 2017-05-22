@@ -11,6 +11,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.core.annotation.Order
 import org.springframework.boot.autoconfigure.security.SecurityProperties
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
+import org.springframework.web.cors.CorsConfiguration
+import collection.JavaConverters._
+import org.springframework.security.oauth2.provider.token.TokenEnhancer
+import org.springframework.security.oauth2.common.OAuth2AccessToken
+import org.springframework.security.oauth2.provider.OAuth2Authentication
 
 @Configuration
 @EnableWebSecurity
@@ -29,6 +34,8 @@ private[server] class SecurityConfig extends WebSecurityConfigurerAdapter
       .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
     .and
       .formLogin()
+//    .and
+//      .cors()
   }
   
   @Autowired
@@ -37,6 +44,12 @@ private[server] class SecurityConfig extends WebSecurityConfigurerAdapter
     auth.inMemoryAuthentication().withUser("bugbug0102").password("0102").roles("USER","ADMIN","BUGBUG")
   }
   
-  
-  
+//  private[server] def corsConfiguration():CorsConfiguration  =
+//  {
+//    val cc = new CorsConfiguration()
+//    cc.setAllowedOrigins(List("*").asJava)
+//    cc.setAllowedMethods(List("*").asJava)
+//    return cc
+//  }
 }
+

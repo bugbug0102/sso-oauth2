@@ -9,7 +9,8 @@ security:
       authenticationScheme: header
       clientAuthenticationScheme: form
     resource:
-      userInfoUri: http://127.0.0.1:40002/profile/user
+      jwt:
+        keyValue: 123
       
 server:
   contextPath: /res2

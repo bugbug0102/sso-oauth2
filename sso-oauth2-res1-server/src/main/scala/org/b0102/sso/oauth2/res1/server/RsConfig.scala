@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import org.springframework.security.oauth2.provider.token.TokenStore
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices
 
 @Configuration
 private[server] class RsConfig extends ResourceServerConfigurerAdapter
@@ -15,4 +16,6 @@ private[server] class RsConfig extends ResourceServerConfigurerAdapter
   {
     resources.resourceId("res1")
   }
+  
+  
 }

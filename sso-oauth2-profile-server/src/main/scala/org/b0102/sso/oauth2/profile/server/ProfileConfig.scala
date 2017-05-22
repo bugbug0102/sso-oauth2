@@ -7,6 +7,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import org.springframework.security.oauth2.provider.token.TokenStore
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso
+import org.springframework.web.cors.CorsConfiguration
+import collection.JavaConverters._
 
 @Configuration
 @EnableResourceServer
@@ -20,4 +22,12 @@ private[server] class ProfileConfig extends ResourceServerConfigurerAdapter
     resources.tokenStore(tokenStore)
     resources.resourceId("profile")
   }
+  
+//  private[server] def corsConfiguration():CorsConfiguration  =
+//  {
+//    val cc = new CorsConfiguration()
+//    cc.setAllowedOrigins(List("http://127.0.0.1:20001").asJava)
+//    cc.setAllowedMethods(List("*").asJava)
+//    return cc
+//  }
 }

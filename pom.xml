@@ -128,5 +128,6 @@
 		<module>sso-oauth2-res1-server</module>
 		<module>sso-oauth2-profile-server</module>
 		<module>sso-oauth2-res2-server</module>
+		<module>sso-oauth2-res3-server</module>
 	</modules>
 </project>

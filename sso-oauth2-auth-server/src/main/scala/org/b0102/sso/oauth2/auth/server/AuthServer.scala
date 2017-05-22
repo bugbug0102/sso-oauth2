@@ -21,6 +21,11 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore
 import org.springframework.security.oauth2.provider.token.TokenStore
 import org.springframework.context.annotation.Bean
 import javax.sql.DataSource
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore
+import org.springframework.security.oauth2.provider.token.AccessTokenConverter
+import org.springframework.context.annotation.Primary
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices
 
 @Configuration
 @EnableAutoConfiguration(exclude=Array(
@@ -34,8 +39,29 @@ import javax.sql.DataSource
 @ComponentScan
 private[server] class Config
 {  
+  
   @Bean
-  private[server] def tokenStore(dataSource:DataSource):TokenStore = new JdbcTokenStore(dataSource)
+  private[server] def accessTokenConverter():AccessTokenConverter =
+  {
+    val jatc = new JwtAccessTokenConverter()
+    jatc.setSigningKey("123")
+    jatc.setVerifierKey("123")
+    return jatc
+  }
+  
+  @Bean
+  private[server] def tokenStore(converter:AccessTokenConverter):TokenStore = new JwtTokenStore(converter.asInstanceOf[JwtAccessTokenConverter])
+  
+  @Bean
+  @Primary
+  private[server] def tokenServices(tokenStore:TokenStore):DefaultTokenServices  =
+  {
+    val dts = new DefaultTokenServices()
+    dts.setTokenStore(tokenStore)
+    dts.setSupportRefreshToken(true)
+    return dts
+  }
+  
 }
 
 object AuthServer 
@@ -45,5 +71,4 @@ object AuthServer
   {
     val ctx = new SpringApplicationBuilder(classOf[Config]).web(true).run(args:_*)
   }
-  
 }

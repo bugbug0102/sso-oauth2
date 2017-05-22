@@ -15,6 +15,11 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore
 import org.springframework.security.oauth2.provider.token.TokenStore
 import javax.sql.DataSource
 import org.springframework.context.annotation.Bean
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices
+import org.springframework.security.oauth2.provider.token.AccessTokenConverter
+import org.springframework.context.annotation.Primary
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter
 
 @Configuration
 @EnableAutoConfiguration(exclude=Array(
@@ -28,7 +33,6 @@ import org.springframework.context.annotation.Bean
 @ComponentScan
 private[server] class Config
 {
-  
 } 
 
 object Res1Server 

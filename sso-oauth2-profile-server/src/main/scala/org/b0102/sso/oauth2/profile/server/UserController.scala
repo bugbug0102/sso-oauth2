@@ -9,11 +9,12 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties
 import org.springframework.security.core.Authentication
 
 @RestController
+@RequestMapping(value = Array("/rest/profile/"))
 private[server] class UserController 
 {
   private val logger = LoggerFactory.getLogger(classOf[UserController])
   
-  @RequestMapping(value = Array("/user"))
+  @RequestMapping(value = Array("user"))
   def user(auth:Authentication, user:Principal):Principal = 
   {
     logger.debug("user {}", user)
